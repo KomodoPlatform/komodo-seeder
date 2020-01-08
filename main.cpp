@@ -35,7 +35,7 @@ public:
   CDnsSeedOpts() : nThreads(96), nDnsThreads(4), nPort(53), mbox(NULL), ns(NULL), host(NULL), tor(NULL), fUseTestNet(false), fWipeBan(false), fWipeIgnore(false), ipv4_proxy(NULL), ipv6_proxy(NULL) {}
 
   void ParseCommandLine(int argc, char **argv) {
-    static const char *help = "Litecoin-seeder\n"
+    static const char *help = "Komodo-seeder\n"
                               "Usage: %s -h <host> -n <ns> [-m <mbox>] [-t <threads>] [-p <port>]\n"
                               "\n"
                               "Options:\n"
@@ -400,14 +400,14 @@ extern "C" void* ThreadStats(void*) {
   return nullptr;
 }
 
-static const string mainnet_seeds[] = {"dnsseed.litecointools.com", "dnsseed.litecoinpool.org", "dnsseed.ltc.xurious.com", "dnsseed.koin-project.com", "seed-a.litecoin.loshan.co.uk", "dnsseed.thrasher.io", ""};
+static const string mainnet_seeds[] = {"kmd.komodoseeds.com", "seeds1.kmd.sh", ""};
 static const string testnet_seeds[] = {"testnet-seed.litecointools.com", "seed-b.litecoin.loshan.co.uk", "testnet-seed.ltc.xurious.com", "dnsseed-testnet.thrasher.io", ""};
 static const string *seeds = mainnet_seeds;
 
 extern "C" void* ThreadSeeder(void*) {
-  if (!fTestNet){
+/*  if (!fTestNet){
     db.Add(CService("kjy2eqzk4zwi5zd3.onion", 9333), true);
-  }
+  } */
   do {
     for (int i=0; seeds[i] != ""; i++) {
       vector<CNetAddr> ips;
@@ -458,10 +458,10 @@ int main(int argc, char **argv) {
   bool fDNS = true;
   if (opts.fUseTestNet) {
       printf("Using testnet.\n");
-      pchMessageStart[0] = 0xfd;
-      pchMessageStart[1] = 0xd2;
-      pchMessageStart[2] = 0xc8;
-      pchMessageStart[3] = 0xf1;
+        pchMessageStart[0] = 0x5A;
+        pchMessageStart[1] = 0x1F;
+        pchMessageStart[2] = 0x7E;
+        pchMessageStart[3] = 0x62;
       seeds = testnet_seeds;
       fTestNet = true;
   }
