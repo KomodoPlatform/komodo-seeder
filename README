@@ -1,7 +1,7 @@
-litecoin-seeder (komodo-seeder)
+komodo-seeder (fork of litecoin-seeder)
 ===============
 
-litecoin-seeder is a crawler for the Litecoin network, which exposes a list
+komodo-seeder is a crawler for the Komodo network, which exposes a list
 of reliable nodes via a built-in DNS server.
 
 Features:
@@ -60,3 +60,4 @@ $ iptables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-port 5353
 
 If properly configured, this will allow you to run dnsseed in userspace, using
 the -p 5353 option.
+
